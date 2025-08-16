@@ -7,7 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   const router = useRouter();
   const onLoginPress = () => {
-    router.navigate("/(tabs)/(auth)/login");
+    router.navigate("/login");
   };
 
   return (

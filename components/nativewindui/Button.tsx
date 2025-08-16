@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import { TextClassContext } from "@/components/nativewindui/Text";
-import { useColorScheme } from "@/hooks/useColorScheme";
+
 import { cn } from "@/lib/cn";
 import { COLORS } from "@/theme/colors";
 
@@ -20,8 +20,7 @@ const buttonVariants = cva("flex-row items-center justify-center gap-2", {
       primary: "ios:active:opacity-80 bg-primary",
       secondary:
         "ios:border-primary ios:active:bg-primary/5 border border-foreground/40",
-      tonal:
-        "ios:bg-primary/10 dark:ios:bg-primary/10 ios:active:bg-primary/15 bg-primary/15 dark:bg-primary/30",
+      tonal: "ios:bg-primary/10 ios:active:bg-primary/15 bg-primary/15",
       plain: "ios:active:opacity-70",
     },
     size: {
@@ -90,18 +89,6 @@ function convertToRGBA(rgb: string, opacity: number): string {
 }
 
 const ANDROID_RIPPLE = {
-  dark: {
-    primary: {
-      color: convertToRGBA(COLORS.dark.grey3, 0.4),
-      borderless: false,
-    },
-    secondary: {
-      color: convertToRGBA(COLORS.dark.grey5, 0.8),
-      borderless: false,
-    },
-    plain: { color: convertToRGBA(COLORS.dark.grey5, 0.8), borderless: false },
-    tonal: { color: convertToRGBA(COLORS.dark.grey5, 0.8), borderless: false },
-  },
   light: {
     primary: {
       color: convertToRGBA(COLORS.light.grey4, 0.4),
@@ -154,8 +141,6 @@ const Button = React.forwardRef<
     },
     ref
   ) => {
-    const { colorScheme } = useColorScheme();
-
     return (
       <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
         <Root
@@ -174,7 +159,7 @@ const Button = React.forwardRef<
             )}
             ref={ref}
             style={style}
-            android_ripple={ANDROID_RIPPLE[colorScheme][variant]}
+            android_ripple={ANDROID_RIPPLE.light[variant]}
             {...props}
           />
         </Root>

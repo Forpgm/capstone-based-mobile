@@ -3,8 +3,8 @@ import React from "react";
 
 export default function _layout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
     </Stack>
   );
 }
